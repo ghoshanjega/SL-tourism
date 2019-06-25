@@ -1,4 +1,5 @@
 backend:
+  # name: 'test-repo'
   name: git-gateway
   branch: master
 
@@ -58,3 +59,27 @@ collections:
           - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
           - {label: Full_image, name: full_image, widget: image}
           - {label: Pricing, name: pricing, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: string}, {label: Plans, name: plans, widget: list, fields: [{label: Plan, name: plan, widget: string}, {label: Price, name: price, widget: string}, {label: Description, name: description, widget: string}, {label: Items, name: items, widget: list}]}]}
+
+  - name: tour
+    label: Tour
+    folder: src/pages/tour/
+    create: true
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "tour"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Featured Post", name: "featuredpost", widget: "boolean"}
+      - {label: "Featured Image", name: "featuredimage", widget: image}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Days", name: "days", widget: "number"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Gallery", name: "gallery", widget: "list", field: {label: Image, name: image, widget: image}}
+      - {label: "Old Price", name: "oldprice", widget: "number", valueType: float}
+      - {label: "Latest Price", name: "latestprice", widget: "number", valueType: float}
+      - {label: "Blurbs", name: "blurbs", widget: "list", fields: [{label: "Image", name: "image", widget: "image"}, {label: Text, name: text, widget: text}]}
+      - {label: "Address", name: "address", widget: "text"}
+      - {label: "PlaceID",name: "placeid", widget: "text" }
+      - {label: "Coordinates",name: "coordinates", widget: "list", fields: [{label: "Longitude",name: "longitude", widget: number, valueType: float},{label: "Latitude",name: "latitude", widget: number, valueType: float},{label: "Visiting place name",name: "visitingplacename", widget: text}] }
+      - {label: Rating, name: "rating", widget: "number"}
+      - {label: "Phone Numbers", name: "phonenumbers", widget: list, field: {label: Number, name: phonenumber, widget: text}}
