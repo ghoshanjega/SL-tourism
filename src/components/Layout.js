@@ -1,15 +1,27 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
-import './all.sass'
-import useSiteMetadata from './SiteMetadata'
+import React from "react";
+import Helmet from "react-helmet";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import NavBar2 from "../components/Navbar-v2";
+import "./all.sass";
+import useSiteMetadata from "./SiteMetadata";
 
 const TemplateWrapper = ({ children }) => {
-  const { title, description } = useSiteMetadata()
+  const { title, description } = useSiteMetadata();
   return (
     <div>
-      <Helmet>
+      <Helmet
+        script={[
+          { src: "https://use.fontawesome.com/releases/v5.9.0/js/all.js" }
+        ]}
+        link={[
+          {
+            rel: "stylesheet",
+            href:
+              "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          }
+        ]}
+      >
         <html lang="en" />
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -44,11 +56,12 @@ const TemplateWrapper = ({ children }) => {
         <meta property="og:url" content="/" />
         <meta property="og:image" content="/img/og-image.jpg" />
       </Helmet>
-      <Navbar />
+      {/* <Navbar /> */}
+      <NavBar2 />
       <div>{children}</div>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default TemplateWrapper
+export default TemplateWrapper;
