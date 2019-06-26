@@ -10,6 +10,8 @@ featuredimage: /img/ghoshan (2).JPG
 days: 3
 tags:
   - 3-days
+  - snorkling
+  - diving
 gallery:
   - /img/ghoshan (2).JPG
   - /img/ghoshan (2).JPG
