@@ -25,14 +25,14 @@ class TourRoll extends React.Component {
                 >
                   <div class="media-left" style={{ backgroundColor: "yellow" }}>
                     {post.frontmatter.featuredimage ? (
-                      <figure class="image is-64x64">
+                      <figure class="image is-128x128">
                         <img
                           src={`${post.frontmatter.featuredimage}`}
                           alt={`${post.frontmatter.title}`}
                         />
                       </figure>
                     ) : (
-                      <figure class="image is-64x64">
+                      <figure class="image is-128x128">
                         <img
                           src="https://bulma.io/images/placeholders/128x128.png"
                           alt="Image"

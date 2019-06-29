@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
+import Gallery from '../components/Gallery' 
 
 export const TourTemplate = ({
   content,
@@ -75,6 +76,7 @@ const Tour = ({ data }) => {
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
       />
+      <Gallery items={post.frontmatter.gallery}/>
     </Layout>
   )
 }
@@ -95,9 +97,28 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
+        featuredpost
+          featuredimage {
+            absolutePath
+          }
+          blurbs {
+            image
+            text
+          }
+        gallery
+        placeid
+        rating
+        phonenumbers
         description
         tags
+        coordinates {
+            latitude
+            longitude
+            visitingplacename
+          }
+        days
       }
+      excerpt
     }
   }
 `
