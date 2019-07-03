@@ -6,14 +6,17 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 import Gallery from '../components/Gallery' 
+// import logo from '../img/logo.png'
+// import Img from "gatsby-image"
 
 export const TourTemplate = ({
   content,
   contentComponent,
-  description,
+  body,
   tags,
   title,
   helmet,
+  galleryitems
 }) => {
   const PostContent = contentComponent || Content
 
@@ -26,7 +29,8 @@ export const TourTemplate = ({
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
-            <p>{description}</p>
+            <p>{body}</p>
+            <Gallery items={galleryitems}/>
             <PostContent content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
@@ -34,7 +38,7 @@ export const TourTemplate = ({
                 <ul className="taglist">
                   {tags.map(tag => (
                     <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                      <button className="button"><Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link></button>
                     </li>
                   ))}
                 </ul>
@@ -50,20 +54,23 @@ export const TourTemplate = ({
 TourTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
-  description: PropTypes.string,
+  body: PropTypes.string,
   title: PropTypes.string,
   helmet: PropTypes.object,
+  gallery: PropTypes.object
 }
 
 const Tour = ({ data }) => {
   const { markdownRemark: post } = data
-
+    // const image = post.frontmatter.gallery[0].childImageSharp
+    // console.log(post.frontmatter.gallery[0])
+    // console.log(!!image.childImageSharp ? "Yes" : "No")
   return (
     <Layout>
       <TourTemplate
         content={post.html}
         contentComponent={HTMLContent}
-        description={post.frontmatter.description}
+        body={post.excerpt}
         helmet={
           <Helmet titleTemplate="%s | Tour">
             <title>{`${post.frontmatter.title}`}</title>
@@ -75,8 +82,10 @@ const Tour = ({ data }) => {
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        galleryitems={post.frontmatter.gallery}
       />
-      <Gallery items={post.frontmatter.gallery}/>
+      {/* <Gallery items={post.frontmatter.gallery}/> */}
+      
     </Layout>
   )
 }
@@ -94,6 +103,7 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+      excerpt
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
@@ -102,10 +112,18 @@ export const pageQuery = graphql`
             absolutePath
           }
           blurbs {
-            image
+            image{
+              absolutePath
+            }
             text
           }
-        gallery
+        gallery{
+          childImageSharp {
+                fluid(maxWidth: 400) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+        }
         placeid
         rating
         phonenumbers

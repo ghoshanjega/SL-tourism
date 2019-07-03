@@ -43,13 +43,13 @@ const Navbar = class extends React.Component {
         <div className="navbar-brand">
           <Link to="/" className="navbar-item has-text-white" title="Logo">
             <div className="container" style={{ height: "100px" }}>
-              <div class={Navbarstyle.ocean}>
-                <div class={Navbarstyle.wave}></div>
-                <div class={Navbarstyle.wave}></div>
+              <div className={Navbarstyle.ocean}>
+                <div className={Navbarstyle.wave}></div>
+                <div className={Navbarstyle.wave}></div>
               </div>
             </div>
             <img src={logo} alt="SL Tourism" style={{ maxWidth:'100%',height:'auto' }} />
-            <h1 class="title" style={{color:'white'}}>SL Tourism</h1>
+            <h1 className="title" style={{color:'white'}}>SL Tourism</h1>
           </Link>
           {/* Hamburger menu */}
           <div
@@ -68,19 +68,19 @@ const Navbar = class extends React.Component {
         >
           <div className="navbar-start has-text-centered">
             <Link className="navbar-item" to="/tour">
-            <a class="button is-medium">Tour</a>
+            <button className="button is-medium">Tour</button>
             </Link>
             <Link className="navbar-item" to="/activity">
-            <a class="button is-medium">Activity</a>
+          <button className="button is-medium">Activity</button>
             </Link>
             <Link className="navbar-item" to="/blog">
-            <a class="button is-medium">Blog</a>
+            <button className="button is-medium">Blog</button>
             </Link>
             <Link className="navbar-item" to="/contact">
-            <a class="button is-medium">Contact</a>
+            <button className="button is-medium">Contact</button>
             </Link>
             <Link className="navbar-item" to="/contact/examples">
-            <a class="button is-medium">Examples</a>
+            <button className="button is-medium">Examples</button>
             </Link>
           </div>
           {/* <div className="navbar-end has-text-centered">

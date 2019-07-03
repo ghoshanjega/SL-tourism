@@ -84,3 +84,4 @@ collections:
       - {label: "Coordinates",name: "coordinates", widget: "list", fields: [{label: "Longitude",name: "longitude", widget: number, valueType: float},{label: "Latitude",name: "latitude", widget: number, valueType: float},{label: "Visiting place name",name: "visitingplacename", widget: text}] }
       - {label: Rating, name: "rating", widget: "number"}
       - {label: "Phone Numbers", name: "phonenumbers", widget: list, field: {label: Number, name: phonenumber, widget: text}}
+      - {label: "AddOns", name: "addons", widget: list, fields: [{label: AddOn, name: addon, widget: string},{label: Price,name: price, widget: number},{label: }]}

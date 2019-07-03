@@ -17,22 +17,22 @@ class TourRoll extends React.Component {
               className="title has-text-primary is-size-4"
               to={post.fields.slug}
             >
-              <div class="box">
+              <div className="box">
                 <article
                   className={`media ${
                     post.frontmatter.featuredpost ? "is-featured" : ""
                   }`}
                 >
-                  <div class="media-left" style={{ backgroundColor: "yellow" }}>
+                  <div className="media-left" style={{ backgroundColor: "yellow" }}>
                     {post.frontmatter.featuredimage ? (
-                      <figure class="image is-128x128">
+                      <figure className="image is-128x128">
                         <img
                           src={`${post.frontmatter.featuredimage}`}
                           alt={`${post.frontmatter.title}`}
                         />
                       </figure>
                     ) : (
-                      <figure class="image is-128x128">
+                      <figure className="image is-128x128">
                         <img
                           src="https://bulma.io/images/placeholders/128x128.png"
                           alt="Image"
@@ -40,26 +40,26 @@ class TourRoll extends React.Component {
                       </figure>
                     )}
                   </div>
-                  <div class="media-content">
-                    {/* <div class="content"> */}
-                      <h2 class="title is-3">{post.frontmatter.title}</h2>
-                      <p class="rating has-text-warning has-margin-bottom-10">
-                        <i class="fas fa-star" /> {post.frontmatter.rating}
+                  <div className="media-content">
+                    {/* <div className="content"> */}
+                      <h2 className="title is-3">{post.frontmatter.title}</h2>
+                      <p className="rating has-text-warning has-margin-bottom-10">
+                        <i className="fas fa-star" /> {post.frontmatter.rating}
                       </p>
                       <div className="tags ">
                         {post.frontmatter.tags.map(tag => (
-                          <span key={tag + `tag`} class="tag is-success">
+                          <span key={tag + `tag`} className="tag is-success">
                             <Link to={`/tags/${kebabCase(tag)}/`}>
-                              <p class="has-text-white">{tag}</p>
+                              <p className="has-text-white">{tag}</p>
                             </Link>
                           </span>
                         ))}
                       </div>
                     {/* </div> */}
                   </div>
-                  <div class="media-right">
+                  <div className="media-right">
                     <p>USD{post.frontmatter.latestprice}</p>
-                    <p class="strike-through">USD20</p>
+                    <p className="strike-through">USD20</p>
                   </div>
                 </article>
               </div>
@@ -84,7 +84,7 @@ export default () => (
       query TourRollQuery {
         allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
-          filter: { frontmatter: { templateKey: { eq: "tour" } } }
+          filter: { frontmatter: { templateKey: { eq: "tour-post" } } }
         ) {
           edges {
             node {
